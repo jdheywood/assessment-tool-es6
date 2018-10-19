@@ -1,0 +1,36 @@
+doctype html
+html(lang='en')
+  head
+    include ../partials/head
+
+    // Custom styles for this template
+    link(href='/css/layout.css', rel='stylesheet')
+
+  body
+    include ../partials/navigation
+
+    // Interaction container and conversation - Wrap rest of page in another container to center content
+    .container.interaction
+      
+      // start of content
+      .row.content.forgotten
+        .col-md-12
+          h2.access-heading
+            | Need a hand?
+
+          form(name="login", action="/forgotten", method="post")
+            .row.content
+              .col-md-12
+                input(type="text", id="username", name="username", placeholder="Email address", class="app-access")
+            hr.divider
+            .row.content
+              .col-md-12
+                input(type="submit", value="Send reset link").btn.btn-lg.btn-default.btn-access
+
+    include ../partials/footer
+
+    if environmentName === 'live'
+      include ../partials/analytics
+
+    script(src='/js/lib/jquery-3.0.0.min.js')
+    script(src='/js/lib/bootstrap.min.js')

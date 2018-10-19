@@ -1,0 +1,24 @@
+nav.navbar.navbar-default.navbar-inverse.navbar-fixed-top
+  .container-fluid
+    .navbar-header
+      if loggedIn === true
+        if context === 'home'
+          a.navbar-brand(href="/")
+            span.glyphicon.glyphicon-user(aria-hidden="true")
+        else
+          a.navbar-brand(href=content.navBack)
+            span.glyphicon.glyphicon-chevron-left(aria-hidden="true")
+        end
+      else
+        a.navbar-brand(href=content.navBack)
+          span.glyphicon.glyphicon-home(aria-hidden="true")
+      a.navbar-help(href="mailto:feedback@goalgettingclub.com?subject=Assessment Tool Query")
+        span.glyphicon.glyphicon-question-sign(aria-hidden="true")
+
+    span.pep-title
+      if debugMode
+        | #{content.heading}
+        span.debug
+          | (debug)
+      else
+        | #{content.heading}

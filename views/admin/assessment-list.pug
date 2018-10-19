@@ -1,0 +1,48 @@
+doctype html
+html(lang='en')
+  head
+    include ../partials/head
+
+    // Custom styles for this template
+    link(href='/css/layout.css', rel='stylesheet')
+
+  body.admin
+    include ../partials/navigation
+
+    // interaction container - wrap rest of page in another container to center content
+    .container.interaction.admin
+      
+      // start of content
+      .row.content.admin
+        .col-md-12
+          h2.assessment
+            | #{content.subtitle}
+          h3.assessment
+            | #{content.bodyText}
+
+      .row.content.assessments
+        .col-md-12
+          for page in paginatedAssessments
+            ul.assessment-list
+              for assessment in page
+                li
+                  span.detail.narrow
+                    - questionCountString = assessment.questions.length === 1 ? '1 question' : assessment.questions.length + ' questions'
+                    a(href=`/admin/assessments/${assessment.id}`) #{assessment.name} (#{questionCountString})
+                  span.controls
+                    a(href=`/admin/assessments/${assessment.id}`).btn.btn-sm.btn-info View
+
+      .row.content.assessment-detail
+        .col-md-12
+          ul
+            li
+              span.detail
+              span.controls.wider
+                a(href='/admin/newassessment').btn.btn-sm.btn-info New Assessment
+
+    include ../partials/footer
+
+    // include partials/analytics.jade
+
+    script(src='/js/lib/jquery-3.0.0.min.js')
+    script(src='/js/lib/bootstrap.min.js')

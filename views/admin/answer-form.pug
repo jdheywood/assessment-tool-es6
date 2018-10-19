@@ -1,0 +1,113 @@
+doctype html
+html(lang='en')
+  head
+    include ../partials/head
+
+    // Custom styles for this template
+    link(href='/css/layout.css', rel='stylesheet')
+
+  body.admin
+    include ../partials/navigation
+
+    // interaction container - wrap rest of page in another container to center content
+    .container.interaction.admin
+      
+      // start of content
+      .row.content.admin
+        .col-md-12
+          h2.assessment
+            | #{question.displayText}
+
+      .row.content.assessment-detail
+        .col-md-12
+          h3.assessment
+            | Answers
+          ul
+            if question.answers.length === 0
+              li
+                span.key.no-answers
+                  | No answers set for this question
+            else
+              for answer in question.answers
+                li
+                  span.key Display Text:
+                  span.value #{answer.displayText}
+
+      .row.content.assessment-detail
+        .col-md-12
+          if formAction === 'new'
+            form(name="newQuestionAnswer", action=`/admin/assessments/${assessment._id}/questions/${question._id}/newanswer`, method="post", class="period", encType="multipart/form-data")
+              h3
+                | New Answer
+              ul
+                li
+                  span.key
+                    | Answer text:
+                  span.value
+                    input(type="text", name="answerText", value="", class="app-access")
+                li
+                  span.key
+                    | Result description:
+                  span.value
+                    - var defaultValue = "Description for display on results screen..."
+                    textarea(rows=3, name="answerDescription", value="", class="app-access").form-control= defaultValue
+                li
+                  span.key
+                    | Result image:
+                  span.value
+                    input(type="file", name="answerImage", value="", class="app-access")
+                  span.key
+                    | Please select an image file (max size 300px wide by 200px high)
+                ul
+                  li
+                    span.detail
+                    span.controls.wider
+                      a(href=`/admin/assessments/${assessment._id}`).btn.btn-sm.btn-warning Cancel
+                      input(type="submit", value="Save", class="submit").btn.btn-sm.btn-info
+                  li
+                    span.detail
+                      for error in errors
+                        span.error
+                          | #{error.message}
+          else
+            form(name="newQuestionAnswer", action=`/admin/assessments/${assessment._id}/questions/${question._id}/editanswer/${answer._id}`, method="post", class="period", encType="multipart/form-data")
+              h3
+                | Edit Answer
+              ul
+                li
+                  span.key
+                    | Answer text:
+                  span.value
+                    input(type="text", name="answerText", value=answer.displayText, class="app-access")
+                li
+                  span.key
+                    | Answer description:
+                  span.value
+                    textarea(rows=3, name="answerDescription", class="app-access").form-control= answer.resultDescription
+                li
+                  span.key
+                    | Result image:
+                  span.value
+                    input(type="file", name="answerImage", value="", class="app-access")
+                  span.key
+                    | Current image:
+                  span.value
+                    img(src=answer.resultImage, alt="Current result image" class="result-image-thumb")
+                ul
+                  li
+                    span.detail
+                    span.controls.wider
+                      a(href=`/admin/assessments/${assessment._id}`).btn.btn-sm.btn-warning Cancel
+                      input(type="submit", value="Save", class="submit").btn.btn-sm.btn-info
+                  li
+                    span.detail
+                      for error in errors
+                        span.error
+                          | #{error.message}
+
+    include ../partials/footer
+
+    // include partials/analytics.jade
+
+    script(src='/js/lib/jquery-3.0.0.min.js')
+    script(src='/js/lib/bootstrap.min.js')

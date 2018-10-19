@@ -1,0 +1,140 @@
+doctype html
+html(lang='en')
+  head
+    include ../partials/head
+
+    // Custom styles for this template
+    link(href='/css/layout.css', rel='stylesheet')
+
+  body.admin
+    include ../partials/navigation
+
+    // interaction container - wrap rest of page in another container to center content
+    .container.interaction.admin
+      
+      // start of content
+      .row.content.admin
+        .col-md-12
+          h2.assessment
+            | #{content.subtitle}
+          h3.assessment
+            | #{assessment.name}
+
+      .row.content.assessment-detail
+        .col-md-12
+          ul
+            li
+              span.detail
+                span.key Name:
+                span.value #{assessment.name}
+              span.controls
+                a(href=`/admin/editassessment/${assessment._id}`).btn.btn-sm.btn-info Edit
+                a(href=`/admin/deleteassessment/${assessment._id}`).btn.btn-sm.btn-danger Delete
+            li
+              span.detail
+                - created = moment(assessment.created).format("dddd MMMM Do YYYY")
+                span.key Created:
+                span.value= created
+            li
+              span.detail
+                - modified = moment(assessment.lastModified).format("dddd MMMM Do YYYY")
+                span.key Last Modified:
+                span.value= modified
+            li
+              span.detail
+                span.key Participation URL:
+                span.value
+                  a(href=`${content.urlRoot}participate/${assessment._id}`, target="_blank") #{content.urlRoot}participate/#{assessment._id}
+            li
+              span.detail
+                span.key Description:
+                span.value #{assessment.description}
+            li
+              span.detail
+                span.key Call to Action:
+                span.value #{assessment.callToAction}
+            li
+              span.detail
+                span.key Intro image:
+                span.value
+                  img.assessment-detail-thumb(src=assessment.imageUrl)
+            li
+              span.detail
+                span.key Result call to action:
+              span.detail
+                span.key Heading:
+                - heading = !!assessment.resultCallToAction ? assessment.resultCallToAction.heading : ''
+                span.value #{heading}
+                span.key Copy:
+                - copy = !!assessment.resultCallToAction ? assessment.resultCallToAction.copy : ''
+                span.value #{copy}
+                span.key Button text:
+                - buttonText = !!assessment.resultCallToAction ? assessment.resultCallToAction.buttonText : ''
+                span.value #{buttonText}
+                span.key Url:
+                - url = !!assessment.resultCallToAction ? assessment.resultCallToAction.url : ''
+                span.value
+                  a(href=url, target="_blank") #{url}
+
+      .row.content.assessment-detail
+        .col-md-12
+          h3.assessment
+            | Questions
+          ul
+            if assessment.questions.length === 0
+              li.question
+                span.detail
+                  span.key.no-questions
+                    | No questions set for this assessment
+            else
+              for question, index in assessment.questions
+                li.question
+                  span.detail
+                    span.key.question Question #{index+1}:
+                    span.key Display text:
+                    span.value #{question.displayText}
+                    span.key Description:
+                    span.value #{question.description}
+                  span.controls
+                    a(href=`/admin/assessments/${assessment._id}/editquestion/${question._id}`).btn.btn-sm.btn-info Edit
+                    a(href=`/admin/assessments/${assessment._id}/deletequestion/${question._id}`).btn.btn-sm.btn-danger Delete
+                    a(href=`/admin/assessments/${assessment._id}/questions/${question._id}/newanswer`).btn.btn-sm.btn-info Add Answer
+                li.answers
+                  ul.answers
+                    if question.answers.length === 0
+                      li
+                        span.detail
+                          span.key.no-answers
+                            | No answers set for this question
+                    else
+                      for answer, index in question.answers
+                        li
+                          span.detail
+                            span.key.answer Answer #{index+1}:
+                            span.key Display text:
+                            span.value #{answer.displayText}
+                            span.key Result description:
+                            span.value #{answer.resultDescription}
+                            span.key Result image:
+                            span.value
+                              img.assessment-detail-thumb(src=answer.resultImage)
+                          span.controls
+                            a(href=`/admin/assessments/${assessment._id}/questions/${question._id}/editanswer/${answer._id}`).btn.btn-sm.btn-info Edit
+                            a(href=`/admin/assessments/${assessment._id}/questions/${question._id}/deleteanswer/${answer._id}`).btn.btn-sm.btn-danger Delete
+
+      .row.content.assessment-detail
+        .col-md-12
+          ul
+            li
+              span.detail
+              span.controls
+                a(href=`/admin/assessments/${assessment._id}/newquestion`).btn.btn-sm.btn-info Add Question
+
+
+    include ../partials/footer
+
+    // include partials/analytics.jade
+
+    script(src='/js/lib/jquery-3.0.0.min.js')
+    script(src='/js/lib/bootstrap.min.js')
+    script(src='/js/lib/moment.min.js')

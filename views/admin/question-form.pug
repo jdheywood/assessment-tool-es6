@@ -1,0 +1,96 @@
+doctype html
+html(lang='en')
+  head
+    include ../partials/head
+
+    // Custom styles for this template
+    link(href='/css/layout.css', rel='stylesheet')
+
+  body.admin
+    include ../partials/navigation
+
+    // wrap in container to center content
+    .container.interaction.admin
+      
+      // start of content
+      .row.content.admin
+        .col-md-12
+          h2.assessment
+            | #{assessment.name}
+
+      .row.content.assessment-detail
+        .col-md-12
+          h3.assessment
+            | Questions
+          ul
+            if assessment.questions.length === 0
+              li.question
+                span.key.no-questions
+                  | No questions set for this assessment
+            else
+              for question in assessment.questions
+                li
+                  span.key Display Text:
+                  span.value #{question.displayText}
+
+      .row.content.assessment-detail
+        .col-md-12
+          if formAction === 'new'
+            form(name="newAssessmentQuestion", action=`/admin/assessments/${assessment._id}/newquestion`, method="post", class="period")
+              h3
+                | New Question
+              ul
+                li
+                  span.key
+                    | Question text:
+                  span.value
+                    input(type="text", name="questionText", value="", class="app-access")
+                li
+                  span.key
+                    | Description:
+                  span.value
+                    input(type="text", name="description", value="", class="app-access")
+                ul
+                  li
+                    span.detail
+                    span.controls.wider
+                      a(href=`/admin/assessments/${assessment._id}`).btn.btn-sm.btn-warning Cancel
+                      input(type="submit", value="Save", class="submit").btn.btn-sm.btn-info
+                  li
+                    span.detail
+                      for error in errors
+                        span.error
+                          | #{error.message}
+          else
+            form(name="newAssessmentQuestion", action=`/admin/assessments/${assessment._id}/editquestion/${question._id}`, method="post", class="period")
+              h3
+                | Edit Question
+              ul
+                li
+                  span.key
+                    | Question text:
+                  span.value
+                    input(type="text", name="questionText", value=question.displayText, class="app-access")
+                li
+                  span.key
+                    | Description:
+                  span.value
+                    input(type="text", name="description", value=question.description, class="app-access")
+                ul
+                  li
+                    span.detail
+                    span.controls.wider
+                      a(href=`/admin/assessments/${assessment._id}`).btn.btn-sm.btn-warning Cancel
+                      input(type="submit", value="Save", class="submit").btn.btn-sm.btn-info
+                  li
+                    span.detail
+                      for error in errors
+                        span.error
+                          | #{error.message}
+
+    include ../partials/footer
+
+    // include partials/analytics.jade
+
+    script(src='/js/lib/jquery-3.0.0.min.js')
+    script(src='/js/lib/bootstrap.min.js')

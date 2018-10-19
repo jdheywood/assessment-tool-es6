@@ -1,0 +1,36 @@
+doctype html
+html(lang='en')
+  head
+    include ../partials/head
+
+    // Custom styles for this template
+    link(href='/css/layout.css', rel='stylesheet')
+
+
+  body.admin
+    include ../partials/navigation
+
+    // interaction container - wrap rest of page in another container to center content
+    .container.interaction.admin
+      
+      // start of content
+      .row.content.admin
+        .col-md-12
+          h2.assessment
+            a(href="/admin/assessments") Manage Assessments
+
+      if canDebug
+        .row.content.debug
+          h2.debug
+            a(href="/admin/debug") Debug Tools
+
+    // include partials/footer-fixed
+
+    if environmentName === 'live'
+      include ../partials/analytics
+
+    script(src='/js/lib/jquery-3.0.0.min.js')
+    script(src='/js/lib/bootstrap.min.js')
+    script(src='/js/lib/moment.min.js')
+    script(src='/js/lib/holder.js')
+    script(src='/js/lib/ofi.browser.js')

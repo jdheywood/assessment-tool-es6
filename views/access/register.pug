@@ -1,0 +1,69 @@
+doctype html
+html(lang='en')
+  head
+    include ../partials/head
+
+    // Custom styles for this template
+    link(href='/css/layout.css', rel='stylesheet')
+
+  body
+    include ../partials/navigation
+
+    // Interaction container and conversation - Wrap rest of page in another container to center content
+    .container.interaction
+      
+      // start of content
+      .row.content.register
+        .col-md-12
+          h2.access-heading
+            | Register
+
+          form(name="register", action="/register", method="post")
+            .row.content
+              .col-md-12
+                input(type="text", name="firstname", placeholder="First name", class="app-access")
+
+            hr.divider
+            .row.content
+              .col-md-12
+                input(type="text", name="username", placeholder="Email address", class="app-access")
+
+            hr.divider
+            .row.content
+              .col-md-12
+                input(type="password", id="password", name="password", placeholder="Password (5 or more characters)", class="app-access")
+
+            hr.divider
+            .row.content
+              .col-md-12.checkbox
+                input(type="checkbox", id="show", name="show", class="app-access")
+                label(for="show")
+                  | Show password
+
+            hr.divider
+            .row.content
+              .col-md-12
+                input(type="submit", value="Register").btn.btn-lg.btn-default.btn-access
+
+                if message
+                  span.error #{message}
+
+    include ../partials/footer
+
+    if environmentName === 'live'
+      include ../partials/analytics
+
+    script(src='/js/lib/jquery-3.0.0.min.js')
+    script(src='/js/lib/bootstrap.min.js')
+    script(src='/js/lib/showHide.js')
+
+    script().
+      $(document).ready(function () {
+        $('#show').change(function () {
+          if ($(this).is(":checked")) {
+            showPassword('#password');
+          } else {
+            hidePassword('#password');
+          }
+        });
+      });

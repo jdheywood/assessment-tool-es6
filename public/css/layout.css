@@ -1,0 +1,979 @@
+/* GLOBAL STYLES
+-------------------------------------------------- */
+body {
+  padding-bottom: 40px;
+  color: #ffffff;
+  height: 100%;
+  background-color: #333e48;
+  overflow-y: scroll; /* has to be scroll, not auto */
+}
+
+/* CUSTOMIZE THE NAVBAR
+-------------------------------------------------- */
+/* Special class on .container surrounding .navbar, used for positioning it into place. */
+.navbar-wrapper {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 20;
+}
+
+/* Flip around the padding for proper display in narrow viewports */
+.navbar-wrapper > .container {
+  padding-right: 0;
+  padding-left: 0;
+}
+.navbar-wrapper .navbar {
+  /* padding-right: 15px; */
+  padding-left: 15px;
+  opacity: 0.8;
+}
+.navbar-wrapper .navbar .container {
+  width: auto;
+}
+
+.container>.navbar-header {
+  margin-right: 0px;
+}
+
+.navbar-inverse .navbar-toggle:hover, .navbar-inverse .navbar-toggle:focus {
+  background-color: #333e48;
+}
+
+.navbar-inverse .navbar-brand {
+  color: #ffffff;
+}
+
+.navbar-inverse {
+  color: #fff;
+  background-color: #333e48; /*transparent;*/
+  border-color: #333e48; /*transparent;*/
+  opacity: 0.9;
+}
+
+.navbar-inverse .navbar-collapse,
+.navbar-inverse .navbar-form {
+  border-color: #fff;
+}
+
+.navbar-inverse .navbar-nav>.active>a,
+.navbar-inverse .navbar-nav>.active>a:hover,
+.navbar-inverse .navbar-nav>.active>a:focus {
+  color: #ffffff;
+  background-color: #333e48;
+}
+
+.navbar-inverse .navbar-nav>.open>a,
+.navbar-inverse .navbar-nav>.open>a:hover,
+.navbar-inverse .navbar-nav>.open>a:focus {
+  color: #ffffff;
+  background-color: #333e48;
+}
+
+.navbar-inverse .navbar-toggle {
+  border-color: #fff;
+}
+
+.navbar-inverse .navbar-toggle .icon-bar {
+  background-color: #fff;
+}
+
+.navbar-inverse .container-fluid {
+  max-width: 500px;
+}
+
+.navbar-brand>img {
+  width: 30px;
+  height: 30px;
+}
+
+.navbar-header span.pep {
+  padding: 15px 0 0 120px;
+  display: inline-block;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+ul.nav.navbar-nav.pep li a {
+  color: #fff;
+}
+
+.navbar-help {
+  float: right;
+  height: 50px;
+  padding: 15px 15px;
+  line-height: 20px;
+  font-size: 30px;
+  color: #fff;
+}
+
+.navbar-brand span {
+  font-size: 30px;
+  color: #fff;
+}
+
+.navbar-help span:hover,
+.navbar-help span:focus,
+.navbar-help span:visited,
+.navbar-help span:active,
+.navbar-help span:before,
+.navbar-help span:after {
+  color: #fff;
+}
+
+span.pep-title {
+  display: block;
+  font-size: 20px;
+  margin-top: -35px;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .container>.navbar-header {
+    margin-right: -15px;
+    margin-left: -15px;
+  }
+  .container-fluid>.navbar-header {
+    margin-right: -15px;
+    margin-left: 0px;
+  }
+  .navbar-header {
+    float: none;
+  }
+}
+
+
+/* INTERACTION CONTENT
+-------------------------------------------------- */
+.container.interaction {
+  padding-top: 5px;
+  max-width: 500px;
+}
+
+.container.interaction.login {
+  max-width: 500px;
+}
+
+/* Center align the text within the three columns below the carousel */
+.interaction .col-lg-4 {
+  margin-bottom: 20px;
+  text-align: center;
+}
+.interaction h2 {
+  font-weight: normal;
+  text-align: center;
+}
+.interaction .col-lg-4 p {
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.divider {
+  margin: 5px 0; /* Space out the Bootstrap <hr> more */
+  border-color: #333e48; /*transparent;*/
+}
+
+/* Access, forms etc
+----------------------------------- */
+.access-heading {
+  color: #fff;
+}
+
+.input-label {
+  color: #fff;
+}
+
+.btn-access {
+  background-color: #7c92b3;
+  border-color: #7c92b3;
+  color: #fff;
+  width: 100%;
+}
+
+.btn-access:hover,
+.btn-access:focus,
+.btn-access:active {
+  color: #fff;
+  background-color: #afcdf0;
+  border-color: #afcdf0;
+}
+
+.btn-alternate {
+  background-color: #7c92b3;
+  border-color: #7c92b3;
+  color: #fff;
+}
+
+.btn-alternate:hover,
+.btn-alternate:focus,
+.btn-alternate:active {
+  color: #fff;
+  background-color: #afcdf0;
+  border-color: #afcdf0;
+}
+
+input.app-access {
+  width: 100%;
+  height: 40px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  background-color: #bbbbbb;
+  color: #fff;
+}
+
+input.app-access.disabled {
+  color: #333e48;
+}
+
+textarea.app-access {
+  background-color: #bbbbbb;
+  color: white;
+  padding: 6px;
+}
+
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+  color:    #fff;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+  color:    #fff;
+  opacity:  1;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+  color:    #fff;
+  opacity:  1;
+}
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color:    #fff;
+}
+
+.row.content.login {
+  margin-top: 50px;
+}
+.row.content.register {
+  margin-top: 0px;
+}
+.row.content.forgotten {
+  margin-top: 100px;
+}
+.row.content.forgotten-link p {
+  text-align: center;
+  margin-top: 30px;
+}
+.row.content.forgotten-link p a {
+  color: #fff;
+}
+
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px #ccc inset;
+  -webkit-text-fill-color: #3677aa;
+}
+
+span.error {
+  width: 100%;
+  display: block;
+  text-align: left;
+  margin-top: 15px;
+  color: #f84545;
+  font-weight: normal;
+  font-size: 16px;
+}
+
+
+/* RESPONSIVE CSS
+-------------------------------------------------- */
+@media (min-width: 768px) {
+  /* Navbar positioning foo */
+  .navbar-wrapper {
+    margin-top: 20px;
+  }
+  .navbar-wrapper .container {
+    padding-right: 15px;
+    padding-left: 15px;
+    width: 790px;
+  }
+  .navbar-wrapper .navbar {
+    padding-right: 0;
+    padding-left: 0;
+  }
+
+  /* The navbar becomes detached from the top, so we round the corners */
+  .navbar-wrapper .navbar {
+    border-radius: 4px;
+  }
+
+  .navbar-nav {
+    float: right;
+  }
+
+  .navbar-inverse .container-fluid {
+    max-width: 700px;
+  }
+
+  .conversation-heading {
+    font-size: 50px;
+  }
+
+  .container.interaction {
+    width: 700px;
+    max-width: 700px;
+  }
+}
+
+@media (min-width: 992px) {
+  .navbar-wrapper .container {
+    width: 970px;
+  }
+
+  .navbar-inverse .container-fluid {
+    max-width: 900px;
+  }
+
+  /*.container.interaction {
+    width: 900px;
+    max-width: 900px;
+  }*/
+}
+
+@media (min-width: 1200px) {
+  .navbar-wrapper .container {
+    width: 1170px;
+  }
+
+  .navbar-inverse .container-fluid {
+    max-width: 1100px;
+  }
+
+  /*.container.interaction {
+    width: 1100px;
+    max-width: 1100px;
+  }*/
+}
+
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  margin-bottom: 100px;
+}
+.footer {
+  position: absolute;
+  bottom: -5%;
+  width: 100%;
+  background-color: #333e48;
+}
+
+.footer.white {
+  background-color: #ffffff;
+}
+
+.footer .text-muted {
+  text-align: center;
+  margin-top: 18px;
+}
+
+.footer .text-muted a {
+  color: #fff;
+}
+
+ul.footer-links {
+  list-style-type: none;
+  padding-left: 0px;
+}
+
+ul.footer-links li a {
+  color: #777;
+}
+
+/* Admin pages
+--------------------------------------------------- */
+body.admin {
+  margin-bottom: 0px;
+}
+
+.image-holder {
+  float: left;
+  position: relative;
+  left: 50%;
+}
+img.admin-icon {
+  display: block;
+  position: relative;
+  left: -50%;
+  width: 80px;
+}
+.container.interaction.admin {
+  padding-top: 55px;
+  padding-bottom: 10px;
+}
+h2.assessment {
+  clear: both;
+  color: #fff;
+}
+h3.assessment, h3.information {
+  text-align: center;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 200;
+  margin-top: 0px;
+}
+
+.row.content.stats,
+.row.content.links,
+.row.content.settings,
+.row.content.debug,
+.row.content.assessments,
+.row.content.controls,
+.row.content.assessment-detail {
+  background-color: #333e48;
+}
+.row.content.links {
+  padding-bottom: 10px;
+}
+.row.content.controls,
+.row.content.assessment-detail {
+  padding-bottom: 5px;
+}
+
+.col-md-12.checkins {
+  background-color: #f7f7f7;
+  margin: 10px;
+  color: #93a4aa;
+}
+h2.checkins {
+  font-size: 20px;
+  padding-top: 15px;
+  margin-bottom: 5px;
+}
+p.checkins {
+  padding-bottom: 10px;
+}
+
+h2.assessment-details {
+  font-size: 20px;
+  padding-top: 5px;
+  margin-bottom: 5px;
+  color: #93a4aa;
+  margin-top: 5px;
+}
+
+.row.content.links.col-md-6 {
+  width: 45%;
+}
+img.doughnut-left {
+  width: 49%;
+  float: left;
+}
+img.doughnut-right {
+  width: 49%;
+  float: right;
+}
+.col-md-6.doughnut {
+  min-height: 0px;
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
+@media (min-width: 992px) {
+  .col-md-12.checkins {
+    width: auto;
+    float: none;
+  }
+  .col-md-6.doughnut {
+    width: auto;
+    float: none;
+  }
+}
+
+.row.content.settings .col-md-12,
+.row.content.assessments .col-md-12,
+.row.content.assessment-detail .col-md-12 {
+  padding-right: 10px;
+  padding-left: 10px;
+}
+.row.content.assessments .col-md-12 {
+  margin-top: 10px;
+}
+
+.row.content.settings ul,
+.row.content.assessments ul,
+.row.content.assessment-detail ul {
+  list-style-type: none;
+  background-color: #fff;
+  -webkit-padding-start: 0px;
+  -moz-padding-start: 0px;
+  padding-left: 0px;
+  border-radius: 5px;
+}
+.row.content.assessment-detail ul {
+  padding-top: 5px;
+}
+.row.content.settings ul li,
+.row.content.assessments ul li {
+  height: 80px;
+  display: block;
+  border-bottom: 3px;
+  border-bottom-color: #333e48;
+  border-bottom-style: solid;
+  text-align: left;
+}
+.row.content.assessment-detail ul li {
+  height: auto;
+  display: block;
+  text-align: left;
+  overflow: hidden;
+}
+
+.row.content.assessments ul li span,
+.row.content.assessment-detail ul li span {
+  font-size: 15px;
+  display: block;
+  margin: 10px 0 10px 10px;
+}
+
+.row.content.assessments ul li span.detail.narrow,
+.row.content.assessment-detail ul li span.detail.narrow {
+  float: left;
+  width: 60%;
+  font-size: 16px;
+}
+.row.content.assessments ul li span.detail,
+.row.content.assessment-detail ul li span.detail {
+  float: left;
+  width: 65%;
+}
+.row.content.assessments ul li span.controls,
+.row.content.assessment-detail ul li span.controls {
+  float: right;
+  width: 30%
+}
+.row.content.assessments ul li span.controls.wider,
+.row.content.assessment-detail ul li span.controls.wider {
+  float: right;
+  width: 35%
+}
+
+@media (min-width: 768px) {
+  .row.content.assessments ul li span.detail,
+  .row.content.assessment-detail ul li span.detail {
+    float: left;
+    width: 70%;
+  }
+  .row.content.assessments ul li span.controls,
+  .row.content.assessment-detail ul li span.controls {
+    float: right;
+    width: 25%
+  }
+  .row.content.assessments ul li span.controls.wider,
+  .row.content.assessment-detail ul li span.controls.wider {
+    float: right;
+    width: 25%
+  }
+}
+
+.row.content.assessments ul li span.controls .btn,
+.row.content.assessment-detail ul li span.controls .btn {
+  margin: 3px;
+}
+
+.row.content.assessment-detail ul li span.key {
+  color: #93a4aa;
+}
+
+.row.content.assessment-detail ul li span.key.question {
+  color: #3677aa;
+  font-size: 24px;
+}
+.row.content.assessment-detail ul li span.key.answer {
+  color: #44aa8e;
+  font-size: 18px;
+}
+
+.row.content.assessment-detail ul li span.key.no-questions {
+  color: #3677aa;
+  font-size: 20px;
+}
+.row.content.assessment-detail ul li span.key.no-answers {
+  color: #44aa8e;
+  font-size: 20px;
+}
+
+.row.content.assessment-detail ul li span.value {
+  color: #333e48;
+  word-wrap: break-word;
+  margin: 10px;
+}
+
+.row.content.assessment-detail ul li.question {
+  border-radius: 5px;
+}
+
+.row.content.assessment-detail ul li.answers {
+  background-color: #333e48;
+}
+
+.row.content.assessment-detail ul.answers {
+  border-top-right-radius: 0;
+  border-top-left-radius: 0;
+  border-bottom: #333e48;
+  border-bottom-style: solid;
+  margin-bottom: 5px;
+  padding-bottom: 5px;
+}
+
+.row.content.settings ul li a {
+  color: #93a4aa;
+  margin-left: 10px;
+  display: inline-block;
+  font-size: 20px;
+  margin-top: 10px;
+}
+
+.row.content.login .col-md-12 input,
+.row.content.register .col-md-12 input {
+  font-size: 18px;
+}
+.col-md-12.checkbox {
+  width: 50px;
+  margin-top: 0px;
+}
+.col-md-12.checkbox input {
+  margin-left: 0px;
+  width: 30px;
+  height: 30px;
+}
+.col-md-12.checkbox label {
+  color: #fff;
+  margin-left: 30px;
+  min-height: 20px;
+  padding-left: 5px;
+  margin-bottom: 0;
+  font-weight: 400;
+  cursor: pointer;
+  display: inline-table;
+  width: 150px;
+  padding-top: 10px;
+}
+
+
+/* Debug mode
+-------------------------------------------- */
+.row.content.debug form {
+  margin: 10px;
+  height: 40px;
+}
+
+span.debug {
+  font-size: 12px;
+  color: #fff;
+}
+
+.navbar span.debug {
+  margin-left: 5px;
+}
+
+.row.content.debug h3,
+.row.content.debug li {
+  color: #fff;
+}
+
+.row.content.debug ul {
+  list-style-type: none;
+  padding-left: 0;
+  margin-bottom: 20px;
+}
+
+.row.content.debug li {
+  margin: 0 0 5px 0;
+}
+
+.row.content.debug li span {
+  margin: 0 0 0 10px;
+  font-size: 18px;
+  color: #333e48;
+}
+
+
+.row.content.debug form.period {
+  height: auto;
+}
+
+.row.content.debug form .submit {
+  margin-bottom: 20px;
+  min-width: 240px;
+}
+
+.row.content.debug .col-md-12 p.lead span {
+  margin-left: 10px;
+  font-weight: 400;
+}
+
+h3.debug {
+  font-size: 12px;
+  color: #fff;
+  text-align: center;
+}
+
+.row.content.options ul.options-list li span.debug {
+  color: #808080;
+  display: block;
+  font-size: 12px;
+}
+
+.row.content.options ul.options-list li span.debug + span.option {
+  margin-top: 0;
+}
+
+img.error {
+  width: 345px;
+}
+
+
+/* SPA styles
+-------------------------------------------------------------------- */
+body.white {
+  background-color: #ffffff;
+  color: #333e48;
+}
+
+img.loading {
+  float: left;
+  margin-left: 40%;
+  width: 20%;
+  margin-top: 50px;
+}
+
+.navbar-static-top {
+  background-color: #333e48;
+  border-style: none;
+  margin-bottom: 0px;
+}
+
+img.heading {
+  max-height: 100px;
+  margin-top: 15px;
+  margin-bottom: 25px;
+}
+
+h1.assessment-intro,
+p.assessment-intro {
+  margin-bottom: 30px;
+}
+
+h1.assessment-intro {
+  font-size: 30px;
+  margin-top: 0px;
+}
+
+form.assessment-form {
+  max-width:500px;
+}
+
+ul li span.results-answer {
+  display: block;
+  padding-top: 10px;
+  font-weight: 600;
+}
+
+ul li div.results-description {
+  margin: 20px 0;
+}
+
+ul li div.results-image {
+  display: table;
+}
+
+ul li div.results-image img {
+  position: relative;
+  left: 30%;
+  max-width: 200px;
+}
+
+#participant-email:-webkit-autofill {
+  background-color: #bbbbbb !important;
+}
+
+h1.assessment-name {
+  font-size: 22px;
+  color: #ee5d1f;
+  margin-top: 20px;
+}
+h2.question-number {
+  font-size: 16px;
+  color: #ee5d1f;
+  font-weight: 500;
+  margin-bottom: 30px;
+}
+h3.question-text {
+  font-size: 18px;
+  font-weight: 600;
+}
+p.question-description {
+  font-size: 16px;
+  margin-bottom: 30px;
+}
+
+ul.questions li {
+  margin-bottom: 10px;
+  border-radius: 5px;
+  color: #333e48;
+  border: 1px solid #ee5d1f;
+  text-align: center;
+}
+
+ul.questions li.active,
+ul.questions li.active:hover,
+ul.questions li.active:focus {
+  background-color: #ee5d1f;
+  color: #ffffff;
+  border-color: #ee5d1f;
+}
+
+ul.list-group.col-md-12.questions {
+  padding-right: 0px;
+}
+
+ul.results {
+  display: block;
+  padding-right: 0px;
+  color: #333e48;
+}
+
+ul.results li {
+  display: block;
+  margin-bottom: 10px;
+  border-color: #ee5d1f;
+  border-left: none;
+  border-top: none;
+  border-right: none;
+}
+
+@media (min-width: 992px) {
+  ul li div.results-image {
+    float: right;
+    position: relative;
+    left: 0;
+  }
+
+  ul li div.results-image img {
+    float: right;
+    position: relative;
+    left: 0;
+  }
+}
+
+div.greeting {
+  color: #ffffff;
+}
+div.greeting a {
+  color: #ee5d1f;
+}
+
+img.result-image-thumb {
+  max-width: 200px;
+}
+
+img.assessment-detail-thumb {
+  max-height: 100px;
+}
+
+a.permalink {
+  color: #ee5d1f;
+  display: inline-block;
+  font-size: 20px;
+  width: 100%;
+  text-align: center;
+}
+
+img.assessment-intro {
+  max-width: 200px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+div.text-help {
+  color: #ee5d1f;
+  margin-top: 10px;
+}
+
+button.assessment-start,
+button.assessment-start:hover,
+button.assessment-start:focus,
+button.assessment-start:active {
+  background-color: #50bcbd;
+  color: #ffffff;
+}
+
+button.btn-primary.question,
+button.btn-primary.question.disabled,
+button.btn-primary.question.disabled:hover,
+button.btn-primary.question.disabled:focus {
+  color: #fff;
+  background-color: #50bcbd;
+  border-color: #50bcbd;
+}
+
+
+.results-description.col-md-12 .image {
+  width: 100%;
+  float:none;
+}
+.results-description.col-md-12 .image .result-image-thumb {
+  display: none;
+}
+.results-description.col-md-12 .description {
+  width: 100%;
+  float:none;
+}
+
+@media (min-width: 768px) {
+  .results-description.col-md-12 .description {
+    width: 65%;
+  }
+  .results-description.col-md-12 .image {
+    width: 30%;
+  }
+  .results-description.col-md-12 .image .result-image-thumb {
+    max-width: 200px;
+    display: block;
+  }
+}
+
+ul.list-group.col-md-12.results .list-group-item:last-child {
+  border-bottom-right-radius: 0px;
+  border-bottom-left-radius: 0px;
+}
+
+h2.result-heading {
+  font-size: 20px;
+  color: #ee5d1f;
+}
+span.question-text {
+  font-size: 18px;
+  font-weight: bold;
+}
+.summary h2.participation {
+  font-size: 20px;
+  font-weight: bold;
+  font-style: italic;
+  color: #ee5d1f;
+}
+.summary p.participation {
+
+}
+a.cta,
+a.cta:hover,
+a.cta:focus,
+a.cta.disabled,
+a.cta.disabled:hover,
+a.cta.disabled:focus {
+  max-width: 200px;
+  color: #fff;
+  background-color: #50bcbd;
+  border-color: #50bcbd;
+}

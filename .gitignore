@@ -1,0 +1,19 @@
+# dependencies / ide
+node_modules
+/.idea
+
+# test / coverage / docs
+coverage
+out
+
+# security
+#config/secretConfig.json
+
+# logs
+npm-debug.log
+
+# s3 tmp
+src/tmp/*
+!src/tmp/.gitkeep
+dist/tmp/*
+!dist/tmp/.gitkeep

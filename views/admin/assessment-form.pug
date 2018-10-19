@@ -1,0 +1,150 @@
+doctype html
+html(lang='en')
+  head
+    include ../partials/head
+
+    // Custom styles for this template
+    link(href='/css/layout.css', rel='stylesheet')
+
+  body.admin
+    include ../partials/navigation
+
+    // wrap in container to center content
+    .container.interaction.admin
+      
+      // start of content
+      .row.content.admin
+        .col-md-12
+          h2.assessment
+            | #{content.subtitle}
+          h3.assessment
+            | #{content.bodyText}
+
+      .row.content.assessment-detail
+        .col-md-12
+          if formAction == 'new'
+            form(name="newAssessment", action="/admin/newassessment", method="post", class="period", encType="multipart/form-data")
+              ul
+                li
+                  span.key
+                    | Name:
+                  span.value
+                    input(type="text", name="name", value="", class="app-access")
+                li
+                  span.key
+                    | Description:
+                  span.value
+                    input(type="text", name="description", value="", class="app-access")
+                li
+                  span.key
+                    | Call to action:
+                  span.value
+                    input(type="text", name="callToAction", value="", class="app-access")
+                li
+                  span.key
+                    | Intro image:
+                  span.value
+                    input(type="file", name="assessmentImage", value="", class="app-access")
+                  span.key
+                    | Please select an image file (max size 300px wide by 200px high)
+                li
+                  span.key
+                    | Result call to action:
+                  span.key
+                    | Heading:
+                  span.value
+                    input(type="text", name="resultCallToActionHeading", value="", class="app-access")
+                  span.key
+                    | Copy:
+                  span.value
+                    textarea(rows=3, name="resultCallToActionCopy", value="", class="app-access").form-control
+                  span.key
+                    | Button text:
+                  span.value
+                    input(type="text", name="resultCallToActionButtonText", value="", class="app-access")
+                  span.key
+                    | Url:
+                  span.value
+                    input(type="text", name="resultCallToActionUrl", value="", class="app-access")
+                ul
+                  li
+                    span.detail
+                    span.controls.wider
+                      a(href="/admin/assessments").btn.btn-sm.btn-warning Cancel
+                      input(type="submit", value="Save", class="submit").btn.btn-sm.btn-info
+                  li
+                    span.detail
+                      for error in errors
+                        span.error
+                          | #{error.message}
+
+          else
+            form(name="editAssessment", action=`/admin/editassessment/${assessment._id}`, method="post", class="period", encType="multipart/form-data")
+              h3
+                | Edit Assessment
+              ul
+                li
+                  span.key
+                    | Name:
+                  span.value
+                    input(type="text", name="name", value=assessment.name, class="app-access")
+                li
+                  span.key
+                    | Description:
+                  span.value
+                    input(type="text", name="description", value=assessment.description, class="app-access")
+                li
+                  span.key
+                    | Call to action:
+                  span.value
+                    input(type="text", name="callToAction", value=assessment.callToAction, class="app-access")
+                li
+                  span.key
+                    | Intro image:
+                  span.value
+                    input(type="file", name="assessmentImage", value="", class="app-access")
+                  span.key
+                    | Current image:
+                  span.value
+                    img(src=assessment.imageUrl, alt="Current assessment image" class="result-image-thumb")
+                li
+                  span.key
+                    | Result call to action:
+                  span.key
+                    | Heading:
+                  span.value
+                    - heading = !!assessment.resultCallToAction ? assessment.resultCallToAction.heading : ''
+                    input(type="text", name="resultCallToActionHeading", value=heading, class="app-access")
+                  span.key
+                    | Copy:
+                  span.value
+                    - copy = !!assessment.resultCallToAction ? assessment.resultCallToAction.copy : ''
+                    textarea(rows=3, name="resultCallToActionCopy", value="", class="app-access").form-control= copy
+                  span.key
+                    | Button text:
+                  span.value
+                    - buttonText = !!assessment.resultCallToAction ? assessment.resultCallToAction.buttonText : ''
+                    input(type="text", name="resultCallToActionButtonText", value=buttonText, class="app-access")
+                  span.key
+                    | Url:
+                  span.value
+                    - url = !!assessment.resultCallToAction ? assessment.resultCallToAction.url : ''
+                    input(type="text", name="resultCallToActionUrl", value=url, class="app-access")
+                ul
+                  li
+                    span.detail
+                    span.controls.wider
+                      a(href="/admin/assessments").btn.btn-sm.btn-warning Cancel
+                      input(type="submit", value="Save", class="submit").btn.btn-sm.btn-info
+                  li
+                    span.detail
+                      for error in errors
+                        span.error
+                          | #{error.message}
+
+    include ../partials/footer
+
+    // include partials/analytics.jade
+
+    script(src='/js/lib/jquery-3.0.0.min.js')
+    script(src='/js/lib/bootstrap.min.js')

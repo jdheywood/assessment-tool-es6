@@ -1,0 +1,48 @@
+doctype html
+html(lang='en')
+  head
+    include ../partials/head
+
+    // Custom styles for this template
+    link(href='/css/layout.css', rel='stylesheet')
+
+  body.admin
+    include ../partials/navigation
+
+    // interaction container - wrap rest of page in another container to center content
+    .container.interaction.admin
+      
+      .row.content.admin
+        .col-md-12
+          h2.assessment
+            | Debug Tools
+
+      .row.content.debug
+        form(name="sendTestEmail", action="/sendtestemail", method="post", class="period")
+          h3
+            | Send Test Email
+          ul
+            li
+              | To:
+              input(type="text", name="emailTo", class="app-access")
+
+          input(type="submit", value="Send Test Email", class="submit").btn.btn-lg.btn-default
+
+      .row.content.debug
+        form(name="sendTestAlert", action="/sendtestalert", method="post", class="period")
+          h3
+            | Send Test Alert
+          ul
+            li
+              | Message:
+              input(type="text", name="message", class="app-access")
+
+          input(type="submit", value="Send Test Alert", class="submit").btn.btn-lg.btn-default
+
+    include ../partials/footer
+
+    // if environmentName === 'live'
+    //   include ../partials/analytics
+
+    script(src='/js/lib/jquery-3.0.0.min.js')
+    script(src='/js/lib/bootstrap.min.js')

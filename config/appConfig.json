@@ -1,0 +1,46 @@
+{
+  "directories": {
+    "appDir": "/app",
+    "dataDir": "/data",
+    "publicDir": "/public",
+    "privateDir": "/private"
+  },
+  "app": {
+    "name": "Creative Huddle Assessments",
+    "rootPage": "app.js",
+    "dev": "_gen_dev",
+    "devPort": 3030,
+    "dist": "app/public/js/dist/",
+    "distPort": 3030,
+    "liveReloadPort": 1337,
+    "src": "app",
+    "srcPort": "3030",
+    "debugMode": {
+      "dev": true,
+      "staging": false,
+      "live": false
+    },
+    "sendEmailsToAdminsOnCompletedAssessment": false,
+    "emailsFromAddress": "",
+    "newRegistrationAlertsAddress": "",
+    "completedAssessmentAddress": "",
+    "completedAssessmentHtmlEmails" : true,
+    "resetPasswordRoute": "/reset/",
+    "developmentEnvironmentUrl": "https://assessment-tool-dev.herokuapp.com/",
+    "stagingEnvironmentUrl": "",
+    "liveEnvironmentUrl": "",
+    "customLiveEnvironmentUrl": "",
+    "assessmentAdminListPageSize": 10,
+    "defaultMeta": {
+      "title": "Creative Huddle Assessments",
+      "description": "A simple tool to build and deliver online assessments",
+      "keywords": "Assessment Tool, Question, Answer, Results, Application"
+    },
+    "defaultContent": {
+      "heading": "Creative Huddle Assessments",
+      "subtitle": "Hello, how can I help you today?",
+      "navBack": "/"
+    },
+    "defaultAnswerImageUrl": "http://placehold.it/200x200"
+  }
+}
